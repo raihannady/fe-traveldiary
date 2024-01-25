@@ -1,0 +1,17 @@
+@import '@styles/base';
+
+.jumbotron {
+  @include directionY;
+  justify-content: center;
+  background-image: url('@static/images/jumbotron.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  height: 600px;
+  .content {
+    // @include directionY;
+    margin: 0 90px;
+    // justify-content: center;
+    height: 200px;
+  }
+}

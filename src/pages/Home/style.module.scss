@@ -1,1 +1,47 @@
 @import '@styles/base';
+
+.container {
+  @include directionY;
+  justify-content: center;
+  .content {
+    @include directionY;
+    margin: 42px 90px;
+    align-items: center;
+    .cardWrapper {
+      box-shadow: 0 0 10px 1px rgba(167, 167, 167, 0.236);
+      .card {
+        @include directionY;
+        .bookmarkWrapper {
+          align-self: flex-end;
+          margin: 5px 5px 0 0;
+          position: absolute;
+
+          z-index: 1;
+          .bookmark {
+            @include directionX;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: var(--color-bg);
+            border-radius: 100%;
+            box-shadow: 0 0 3px 3px rgba(167, 167, 167, 0.236);
+          }
+        }
+      }
+    }
+    .title {
+      align-self: flex-start;
+    }
+    .search {
+      @include directionX;
+      justify-content: center;
+      width: 90%;
+      margin: 51px 0;
+    }
+    .cardWrapper {
+      @include directionX;
+      align-self: flex-start;
+    }
+  }
+}

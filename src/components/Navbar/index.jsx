@@ -9,8 +9,13 @@ import MenuItem from '@mui/material/MenuItem';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import LightModeIcon from '@mui/icons-material/LightMode';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 
 import { setLocale, setTheme } from '@containers/App/actions';
+import darklogo from '@static/images/darkLogo.svg';
+import lightlogo from '@static/images/lightLogo.svg';
+import { logout } from './actions';
 
 import classes from './style.module.scss';
 
@@ -43,14 +48,18 @@ const Navbar = ({ title, locale, theme }) => {
     navigate('/');
   };
 
+  const handleClickLogout = () => {
+    dispatch(logout());
+    navigate('/login');
+  };
+
   return (
     <div className={classes.headerWrapper} data-testid="navbar">
       <div className={classes.contentWrapper}>
         <div className={classes.logoImage} onClick={goHome}>
-          <img src="/vite.svg" alt="logo" className={classes.logo} />
-          <div className={classes.title}>{title}</div>
+          <img src={lightlogo} alt="logo" className={classes.logo} />
         </div>
-        <div className={classes.toolbar}>
+        {/* <div className={classes.toolbar}>
           <div className={classes.theme} onClick={handleTheme} data-testid="toggleTheme">
             {theme === 'light' ? <NightsStayIcon /> : <LightModeIcon />}
           </div>
@@ -59,7 +68,27 @@ const Navbar = ({ title, locale, theme }) => {
             <div className={classes.lang}>{locale}</div>
             <ExpandMoreIcon />
           </div>
-        </div>
+        </div> */}
+        <Stack spacing={2} direction="row">
+          <Button
+            variant="outlined"
+            size="small"
+            sx={{ textTransform: 'none', width: '100px', height: '35px' }}
+            href="/login"
+            onClick={handleClickLogout}
+          >
+            Login
+          </Button>
+          <Button
+            variant="contained"
+            size="small"
+            sx={{ textTransform: 'none', width: '100px', height: '35px' }}
+            href="/register"
+          >
+            Register
+          </Button>
+        </Stack>
+
         <Menu open={open} anchorEl={menuPosition} onClose={handleClose}>
           <MenuItem onClick={() => onSelectLang('id')} selected={locale === 'id'}>
             <div className={classes.menu}>

@@ -4,7 +4,11 @@ import { merge } from 'lodash';
 import request from '@utils/request';
 
 const urls = {
-  ping: 'ping.json',
+  ping: '',
+  post: 'post',
+  register: 'user/register',
+  login: 'user/login',
+  detailpost: 'detail/:id',
 };
 
 export const callAPI = async (endpoint, method, header = {}, params = {}, data = {}) => {
@@ -28,3 +32,11 @@ export const callAPI = async (endpoint, method, header = {}, params = {}, data =
 };
 
 export const ping = () => callAPI(urls.ping, 'get');
+export const getPost = () => callAPI(urls.post, 'GET');
+export const getDetailPost = () => callAPI(urls.detailpost, 'GET');
+export const register = (dataUser) => {
+  return callAPI(urls.register, 'POST', {}, {}, dataUser);
+};
+export const login = (dataUser) => {
+  return callAPI(urls.login, 'POST', {}, {}, dataUser);
+};

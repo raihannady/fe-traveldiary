@@ -1,0 +1,11 @@
+@import '@styles/base';
+
+.container {
+  @include directionY;
+  justify-content: center;
+  margin: 8rem 90px;
+  .title {
+    @include directionX;
+    justify-content: space-between;
+  }
+}
