@@ -5,6 +5,7 @@ import NotFound from '@pages/NotFound';
 import Register from '@pages/Register';
 import Login from '@pages/Login';
 import Detail from '@pages/Detail';
+import Profile from '@pages/Profile';
 
 const routes = [
   {
@@ -33,6 +34,13 @@ const routes = [
     name: 'Detail',
     protected: false,
     component: Detail,
+    layout: MainLayout,
+  },
+  {
+    path: '/profile',
+    name: 'Profile',
+    protected: false,
+    component: Profile,
     layout: MainLayout,
   },
   { path: '*', name: 'Not Found', component: NotFound, layout: MainLayout, protected: false },

@@ -23,9 +23,9 @@ import bookmark from '@static/images/bookmark.svg';
 import { getPost } from './actions';
 import { selectPost } from './selectors';
 import { Link } from 'react-router-dom';
-// import { selectLogin } from '@containers/Client/selectors';
+import { selectLogin } from '@containers/Client/selectors';
 
-const Home = ({ post }) => {
+const Home = ({ post, login }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const Home = ({ post }) => {
   console.log(post, '<<<<<< PAGE');
   return (
     <div>
-      <Jumbotron />
+      {!login && <Jumbotron />}
       <Box className={classes.container}>
         <Box className={classes.content}>
           <Box className={classes.title}>
@@ -114,12 +114,12 @@ const Home = ({ post }) => {
 
 Home.propTypes = {
   post: PropTypes.array,
-  // login: PropTypes.bool,
+  login: PropTypes.bool,
 };
 
 const mapStateToProps = createStructuredSelector({
   post: selectPost,
-  // login: selectLogin,
+  login: selectLogin,
 });
 
 export default connect(mapStateToProps)(Home);
